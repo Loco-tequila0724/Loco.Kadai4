@@ -1,19 +1,28 @@
-//
-//  ViewController.swift
-//  Loco.Kadai4
-//
-//  Created by 日高隼人 on 2021/06/14.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
+struct Counter {
+    private (set) var currentNumber: Int = 0
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    mutating func increaseByOne() {
+        currentNumber += 1
     }
 
-
+    mutating func resetNumber() {
+        currentNumber = 0
+    }
 }
 
+class ViewController: UIViewController {
+    @IBOutlet private weak var currentNumberLabel: UILabel!
+    var counter = Counter()
+
+    @IBAction private func increaseButton(_ sender: Any) {
+        counter.increaseByOne()
+        currentNumberLabel.text = String(counter.currentNumber)
+    }
+
+    @IBAction private func clearButton(_ sender: Any) {
+        counter.resetNumber()
+        currentNumberLabel.text = String(counter.currentNumber)
+    }
+}
