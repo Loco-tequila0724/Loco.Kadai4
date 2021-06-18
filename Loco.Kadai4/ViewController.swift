@@ -1,7 +1,7 @@
 import UIKit
 
 struct Counter {
-    private (set) var currentNumber: Int = 0
+    private (set) var currentNumber = 0
 
     mutating func increaseByOne() {
         currentNumber += 1
@@ -14,7 +14,7 @@ struct Counter {
 
 class ViewController: UIViewController {
     @IBOutlet private weak var currentNumberLabel: UILabel!
-    var counter = Counter()
+    private var counter = Counter()
 
     @IBAction private func increaseButton(_ sender: Any) {
         counter.increaseByOne()
